@@ -25,7 +25,7 @@ export default class NavigationBar extends Component {
     const { fixed } = this.state;
     const { onVisiualizePressed, onClearPathPressed } = this.props;
     return (
-      <Menu fixed="top" inverted>
+      <Menu fixed="top" inverted style={{ backgroundColor: "#061830" }}>
         <Container>
           <Menu.Item as="a" header>
             <Image
