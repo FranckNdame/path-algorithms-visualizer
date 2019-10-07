@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Node from "./Node/Node";
-import { dijkstra, getNodesInShortestPathOrder } from "./Algorithms/dijksta";
+import NavigationBar from "./Header/NavigationBar";
+import { dijkstra, getNodesInShortestPathOrder } from "./Algorithms/dijkstra";
 import "./Main.css";
 
 const START_NODE_ROW = 10;
@@ -12,13 +13,29 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      grid: []
+      grid: [],
+      mouseIsPressed: false
     };
   }
 
   componentDidMount() {
     const grid = getInitialGrid();
     this.setState({ grid });
+  }
+
+  handleMouseDown(row, col) {
+    const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
+    this.setState({ grid: newGrid, mouseIsPressed: true });
+  }
+
+  handleMouseEnter(row, col) {
+    if (!this.state.mouseIsPressed) return;
+    const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
+    this.setState({ grid: newGrid });
+  }
+
+  handleMouseUp() {
+    this.setState({ mouseIsPressed: false });
   }
 
   animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
@@ -60,10 +77,12 @@ export default class Main extends Component {
     const { grid, mouseIsPressed } = this.state;
 
     return (
-      <>
-        <button onClick={() => this.visualizeDijkstra()}>
+      <div>
+        {/* <button onClick={() => this.visualizeDijkstra()}>
           Visualize Dijkstra's Algorithm
-        </button>
+        </button> */}
+        <NavigationBar onVisiualizePressed={() => this.visualizeDijkstra()} />
+
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
@@ -91,7 +110,7 @@ export default class Main extends Component {
             );
           })}
         </div>
-      </>
+      </div>
     );
   }
 }
@@ -119,4 +138,15 @@ const createNode = (col, row) => {
     isWall: false,
     previousNode: null
   };
+};
+
+const getNewGridWithWallToggled = (grid, row, col) => {
+  const newGrid = grid.slice();
+  const node = newGrid[row][col];
+  const newNode = {
+    ...node,
+    isWall: !node.isWall
+  };
+  newGrid[row][col] = newNode;
+  return newGrid;
 };
