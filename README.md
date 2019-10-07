@@ -5,6 +5,7 @@
 ## Overview
 
 An intuitive approach to path visualization algorithms using React!
+![](public/dijkstra.gif)
 
 ## Algorithms
 
@@ -18,8 +19,8 @@ The algorithm exists in many variants. Dijkstra's original algorithm found the s
 
 For a given source node in the graph, the algorithm finds the shortest path between that node and every other. It can also be used for finding the shortest paths from a single node to a single destination node by stopping the algorithm once the shortest path to the destination node has been determined. For example, if the nodes of the graph represent cities and edge path costs represent driving distances between pairs of cities connected by a direct road (for simplicity, ignore red lights, stop signs, toll roads and other obstructions), Dijkstra's algorithm can be used to find the shortest route between one city and all other cities.
 
-<img src="public/edsger-w-dijkstra.jpeg" alt="alt text" width="100" height="100">
-![](public/edsger-w-dijkstra.jpeg | width=100)
+<img src="public/edsger-w-dijkstra.jpeg" alt="alt text" height="150">
+Edsger W Dijkstra
 
 ## Usage
 
