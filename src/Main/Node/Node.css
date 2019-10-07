@@ -1,16 +1,22 @@
 .node {
-  width: 25px;
-  height: 25px;
-  outline: 0.5px solid rgb(175, 216, 248);
+  width: 26px;
+  height: 26px;
+  outline: 1px solid rgba(25, 120, 161, 0.349);
+  margin-top: -1px;
+  margin-right: 1px;
   display: inline-block;
 }
 
 .node-finish {
-  background-color: red;
+  background-image: url("/destination-node.png");
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
 }
 
 .node-start {
-  background-color: green;
+  background-image: url("/origin-node.png");
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
 }
 
 .node-visited {
@@ -32,7 +38,7 @@
   }
 
   50% {
-    background-color: rgba(17, 104, 217, 0.75);
+    background-color: rgba(195, 78, 206, 0.75);
   }
 
   75% {
@@ -42,7 +48,7 @@
 
   100% {
     transform: scale(1);
-    background-color: rgba(0, 190, 218, 0.75);
+    background-color: rgba(12, 53, 71, 0.63);
   }
 }
 
@@ -64,16 +70,16 @@
 @keyframes shortestPath {
   0% {
     transform: scale(0.6);
-    background-color: rgb(255, 254, 106);
+    background-color: brown;
   }
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1.4);
     background-color: rgb(255, 254, 106);
   }
 
   100% {
     transform: scale(1);
-    background-color: rgb(255, 254, 106);
+    background-color: greenyellow;
   }
 }

@@ -23,7 +23,7 @@ export default class NavigationBar extends Component {
 
   render() {
     const { fixed } = this.state;
-    const { onVisiualizePressed } = this.props;
+    const { onVisiualizePressed, onClearPathPressed } = this.props;
     return (
       <Menu fixed="top" inverted>
         <Container>
@@ -55,8 +55,15 @@ export default class NavigationBar extends Component {
             </Dropdown.Menu>
           </Dropdown>
           <Menu.Item position="right">
+            <Button
+              style={{ marginRight: 16 }}
+              onClick={() => onClearPathPressed()}
+            >
+              Clear Path
+            </Button>
+
             <Button color="blue" onClick={() => onVisiualizePressed()}>
-              Visualize
+              Visualize Algorithm
             </Button>
           </Menu.Item>
         </Container>

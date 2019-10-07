@@ -73,15 +73,21 @@ export default class Main extends Component {
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
 
+  clearPath() {
+    this.setState({ grid: [] });
+    const grid = getInitialGrid();
+    this.setState({ grid });
+  }
+
   render() {
     const { grid, mouseIsPressed } = this.state;
 
     return (
       <div>
-        {/* <button onClick={() => this.visualizeDijkstra()}>
-          Visualize Dijkstra's Algorithm
-        </button> */}
-        <NavigationBar onVisiualizePressed={() => this.visualizeDijkstra()} />
+        <NavigationBar
+          onVisiualizePressed={() => this.visualizeDijkstra()}
+          onClearPathPressed={() => this.clearPath()}
+        />
 
         <div className="grid">
           {grid.map((row, rowIdx) => {
